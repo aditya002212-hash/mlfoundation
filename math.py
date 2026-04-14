@@ -15,3 +15,19 @@ def cosine_similarity(a, b):
     mag_b = math.sqrt(sum(x*x for x in b))
     return dot / (mag_a * mag_b)
 
+# normalizing ( making unit vector )
+# unit vector help us neglect the magnitude of vector and more focous on the direction
+## normalize or making unit vector
+def normalize(v):
+    mag = math.sqrt(sum(x*x for x in v))
+    return [x/mag for x in v]
+
+def cosine_similarity(a, b):
+    a = normalize(a)
+    b = normalize(b)
+    return sum(x*y for x, y in zip(a, b))
+
+v1 = [1, 1]
+v2 = [10, 10]
+
+print(cosine_similarity(v1, v2))  # Should be ~1 
