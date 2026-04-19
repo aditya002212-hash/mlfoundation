@@ -57,3 +57,24 @@ query=[1,1]
 
 result=retrival(query,documents)
 print(result)
+
+# matrix 
+# in llm we store multiple vectors in matrix and we calculate the process by matrix multiplication
+def matrix_multiply(A, B):
+    result = []
+
+    for i in range(len(A)):  
+        row = []
+        for j in range(len(B[0])):
+            val = 0
+            for k in range(len(B)):
+                val += A[i][k] * B[k][j]
+            row.append(val)
+        result.append(row)
+
+    return result
+
+A = [[1, 2]]
+B = [[3], [4]]
+
+print(matrix_multiply(A, B))  # [[11]]
