@@ -78,3 +78,22 @@ A = [[1, 2]]
 B = [[3], [4]]
 
 print(matrix_multiply(A, B))  # [[11]]
+
+# in llm their are neural layer which help to get the output 
+# neural layer help to forward pass the input to get the output 
+# neural layer   ( w - weight , x - input , b-bias)
+# function 
+def neural_layer(w,x,b):   # w is weigth of neuron 
+  result=[]                # x is the input 
+                           # b is the biasing z=w.x+b
+  for i in range(len(w)):
+
+    val=0
+    for j in range(len(x)):
+      val+=x[j]*w[i][j]
+      val+=b[i]
+    result.append(val)
+  return result
+
+def relu(z):
+  return[max(0,val) for val in z]
