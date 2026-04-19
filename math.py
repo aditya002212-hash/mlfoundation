@@ -168,3 +168,20 @@ for epoch in range(1000):
 print("Weights:", w)
 print("Bias:", b)
 print("Prediction for [1,2]:", w[0]*1 + w[1]*2 + b)
+
+
+
+#in complex neural network we need to go backward and calculating the gradient descent for eack neuron for each layer
+# matrix multiplication happen if the columm of first = to row of first and result in row of first into columm of second 
+# so in backtracking we need to transpose the ouput matrix 
+# transpose shifting the matrix rows into columns and columns into row 
+def transpose(a):
+  transpose = [[0 for _ in range(len(a))] for _ in range(len(a[0]))]
+  for i in range(len(a)):
+    for j in range(len(a[0])):
+      transpose[j][i] = a[i][j]
+  return transpose
+a=[[2,3,4],[6,5,7],[7,8,9]]
+print(transpose(a))
+
+      
