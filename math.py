@@ -129,3 +129,42 @@ lr = 0.01
 # update weights (simplified)
 W2[0][0] -= lr * grad_output * a1[0]
 W2[0][1] -= lr * grad_output * a1[1] 
+
+
+# building neural network 
+import random
+
+random.seed(42)
+
+w = [random.random(), random.random()]
+b = random.random()
+lr = 0.01
+
+data = [
+    ([1, 2], 3),
+    ([2, 3], 5),
+    ([3, 4], 7),
+]
+
+for epoch in range(1000):
+    total_loss = 0
+    for X, y_true in data:
+        y_pred = w[0] * X[0] + w[1] * X[1] + b
+        loss = (y_pred - y_true) ** 2
+        total_loss += loss
+
+        dL_dy = 2 * (y_pred - y_true)
+        dw0 = dL_dy * X[0]
+        dw1 = dL_dy * X[1]
+        db = dL_dy
+
+        w[0] -= lr * dw0
+        w[1] -= lr * dw1
+        b -= lr * db
+
+    if epoch % 100 == 0:
+        print(epoch, total_loss)
+
+print("Weights:", w)
+print("Bias:", b)
+print("Prediction for [1,2]:", w[0]*1 + w[1]*2 + b)
