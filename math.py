@@ -95,5 +95,37 @@ def neural_layer(w,x,b):   # w is weigth of neuron
     result.append(val)
   return result
 
-def relu(z):
+def relu(z):    # activation of the right neural
   return[max(0,val) for val in z]
+ # learning how llm work as we set the weight and biasing of each layer 
+ # and we take the input and it will compute the output if the prdeicted output is correct then it is right
+ # if not the we will find the gradiend descent and then set the adjust the weigths accordingly 
+# Input
+X = [2, 3]
+
+# Layer 1
+W1 = [[1, 2], [3, 4]]
+b1 = [1, 1]
+
+# Layer 2
+W2 = [[1, 1]]
+b2 = [0]
+
+z1 = neural_layer(W1, X, b1)
+a1 = relu(z1)
+
+z2 = neural_layer(W2, a1, b2)
+y_pred = z2[0]
+y_true=22
+# loss
+loss = (y_pred - y_true)**2
+
+# backward (conceptual)
+grad_output = 2 * (y_pred - y_true)
+
+#the learning rate
+lr = 0.01
+
+# update weights (simplified)
+W2[0][0] -= lr * grad_output * a1[0]
+W2[0][1] -= lr * grad_output * a1[1] 
