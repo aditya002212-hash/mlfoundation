@@ -134,7 +134,7 @@ W2[0][1] -= lr * grad_output * a1[1]
 # building neural network 
 import random
 
-random.seed(42)
+random.seed(42) # fixwed thw weight so we get same value whhenever we run
 
 w = [random.random(), random.random()]
 b = random.random()
@@ -183,5 +183,51 @@ def transpose(a):
   return transpose
 a=[[2,3,4],[6,5,7],[7,8,9]]
 print(transpose(a))
+
+
+
+
+# making a small model house prediction 
+X = [1, 2, 3, 4, 5]      # size
+Y = [2, 4, 6, 8, 10]     # price
+Y1= [2.2, 3.9, 6.1, 7.8, 10.2] # another data for experiment
+
+#  learning loop 
+#input - predict - loss - gradient - adjust weight 
+
+
+# initialize parameters
+random.seed(42)
+w = random.random()
+b = random.random()
+
+
+lr = 0.01
+epochs = 100  
+
+for epoch in range(epochs):
+
+    total_loss = 0
+
+    for x, y in zip(X, Y1):
+        # forward pass
+        y_pred = w * x + b
+
+        # loss (MSE)
+        loss = (y - y_pred) ** 2
+        total_loss += loss
+
+        # gradients
+        dw = -2 * x * (y - y_pred)
+        db = -2 * (y - y_pred)
+
+        # update
+        w -= lr * dw
+        b -= lr * db
+
+    print(f"Epoch {epoch}, Loss: {total_loss:.4f}")
+
+print("Final w:", w, "Final b:", b)
+            
 
       
