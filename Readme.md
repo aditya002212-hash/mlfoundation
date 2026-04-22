@@ -40,6 +40,8 @@ Python implementations of concepts
 NumPy-based computations
 From scratch logic (no black box)
 
+📌 5. RAG (Retrieval Augmented Generation)
+
 🎯 Goal of This Repo
 Build deep understanding, not surface-level knowledge
 Prepare for ML Engineering / AI roles
