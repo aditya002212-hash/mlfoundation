@@ -10,6 +10,16 @@ docs=['1. Capital of France - Paris',
 '4. Capital of Germany - Berlin',
 '5. Capital of Italy - Rome']
 
-embedding_doc=model.embedding_doc(docs,dimensions=384)
-print(embedding_doc)
+vector_doc=model.embed_documents(docs)
+print(vector_doc)
+
+query='what is capital of germany ?'
+vector_query=model.embed_query(query)
+print(vector_query)
+
+result=cosine_similarity([vector_query],vector_doc)
+
+print(result)
+
+
 
