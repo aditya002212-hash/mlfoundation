@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 model = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
-docs=['1. Capital of France - Paris',
+docs=['1. Capital of France - Paris',   # info docs
 '2.  Capital of India - New Delhi',
 '3. Capital of Japan - Tokyo',
 '4. Capital of Germany - Berlin',
@@ -13,7 +13,7 @@ docs=['1. Capital of France - Paris',
 vector_doc=model.embed_documents(docs)
 
 
-query='what is capital of germany ?'
+query='what is capital of india ?'  # user query 
 vector_query=model.embed_query(query)
 
 
