@@ -11,15 +11,21 @@ docs=['1. Capital of France - Paris',
 '5. Capital of Italy - Rome']
 
 vector_doc=model.embed_documents(docs)
-print(vector_doc)
+
 
 query='what is capital of germany ?'
 vector_query=model.embed_query(query)
-print(vector_query)
+
 
 result=cosine_similarity([vector_query],vector_doc)
 
-print(result)
+ans=sorted(list(enumerate(result[0])),key=lambda x:x[1])
+
+print('user query --:', query)
+print('retrieved info-- : ',docs[ans[-1][0]])
+
+
+
 
 
 
